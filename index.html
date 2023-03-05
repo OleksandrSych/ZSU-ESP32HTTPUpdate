@@ -1,43 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Список файлів у папці Bins</title>
+	<title>Файл Test2.ino.bin</title>
 </head>
 <body>
-	<h1>Список файлів у папці Bins:</h1>
-	<ul id="file-list">
+	<h1>Файл Test2.ino.bin:</h1>
+	<ul>
+		<li><a href="Bins/Test2.ino.bin">Test2.ino.bin</a></li>
 	</ul>
-	<script>
-		// Встановлюємо шлях до папки
-		var path = "Bins/";
-
-		// Отримуємо список файлів у папці за допомогою AJAX-запиту
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', path);
-		xhr.onload = function() {
-			if (xhr.status === 200) {
-				// Розбиваємо відповідь на рядки та виводимо посилання на кожен файл
-				var files = xhr.responseText.split('\n');
-				var fileList = document.getElementById('file-list');
-				for (var i = 0; i < files.length; i++) {
-					var file = files[i].trim();
-					// Пропускаємо ".", ".." та інші системні файли
-					if (file == "." || file == "..") {
-						continue;
-					}
-					// Створюємо посилання на файл та додаємо його до списку
-					var link = document.createElement('a');
-					link.href = path + file;
-					link.textContent = file;
-					var listItem = document.createElement('li');
-					listItem.appendChild(link);
-					fileList.appendChild(listItem);
-				}
-			} else {
-				console.log('Помилка: ' + xhr.status);
-			}
-		};
-		xhr.send();
-	</script>
 </body>
 </html>
